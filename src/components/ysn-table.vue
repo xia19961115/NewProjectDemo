@@ -44,6 +44,7 @@
             <!-- 默认渲染数据 -->
             <div v-else>{{ scope.row[item.prop] || "-" }}</div>
           </template>
+          <!-- 操作 -->
           <template v-else>
             <div style="display: flex">
               <div v-for="(item, index) in item.child" :key="index">
