@@ -24,6 +24,10 @@
             >
             </el-image>
           </template>
+          <!-- 插槽其他处理业务 -->
+          <template v-else-if="item.type === 'slot'">
+            <slot :name="item.prop" v-bind="scope.row"></slot>
+          </template>
           <!-- 非handle 为非操作 -->
           <template v-else-if="item.type !== 'handle'">
             <!-- 日期 -->
