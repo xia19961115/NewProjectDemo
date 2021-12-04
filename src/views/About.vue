@@ -11,7 +11,8 @@
       </template>
     </ysn-table>
     <ysn-page 
-    :total="1000" 
+    :total="1000"
+    :page="1"
     @change="handlePage"
     ></ysn-page>
   </div>

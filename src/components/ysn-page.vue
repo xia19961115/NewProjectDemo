@@ -5,7 +5,7 @@
       layout="total, sizes, prev, pager, next, jumper"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      :current-page.sync="page"
+      :current-page.sync="myPage"
       :page-sizes="[5, 10, 20, 50]"
       :page-size="size"
       :total="total"
@@ -21,6 +21,11 @@ export default {
       typeof: Number,
       required: true,
     },
+    page: {
+      typeof: Number,
+      required: true,
+      default:1
+    },
     background: {
       typeof: Boolean,
       default: false,
@@ -29,17 +34,17 @@ export default {
   data() {
     return {
       size: 10,
-      page:1
+      myPage:this.page
     };
   },
   methods: {
     handleSizeChange(val) {
       this.size = val;
-      this.$emit("change", this.page, this.size);
+      this.$emit("change", this.myPage, this.size);
     },
     handleCurrentChange(val) {
-      this.page = val;
-      this.$emit("change", this.page, this.size);
+      this.myPage = val
+      this.$emit("change", this.myPage, this.size);
     },
   },
 };
