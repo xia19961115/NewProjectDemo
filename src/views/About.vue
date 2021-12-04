@@ -7,7 +7,7 @@
       @edit="handleEdit"
     >
       <template v-slot:slot='scope'>
-        <div>{{scope.name}}</div>
+        <div>{{scope.name+'插槽中的数据'}}</div>
       </template>
     </ysn-table>
   </div>
