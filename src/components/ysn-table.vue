@@ -4,6 +4,9 @@
       <!-- 是否需要筛选 -->
       <el-table-column v-if="selection" type="selection" width="55">
       </el-table-column>
+      <!-- 是否需要序号 -->
+      <el-table-column v-if="numberSort" type="index" width="60" label="序号">
+      </el-table-column>
       <el-table-column
         v-for="(item, index) in options"
         :key="index"
@@ -93,6 +96,10 @@ export default {
       default: () => [],
     },
     selection: {
+      typeof: Boolean,
+      default: false,
+    },
+    numberSort: {
       typeof: Boolean,
       default: false,
     },

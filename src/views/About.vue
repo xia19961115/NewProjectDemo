@@ -3,6 +3,7 @@
     <ysn-table
       :data="data"
       :options="options"
+      :numberSort="true"
       :selection="true"
       @edit="handleEdit"
     ></ysn-table>
@@ -58,7 +59,7 @@ export default {
           child: [
             {
               label: "编辑",
-              type: "warning",
+              type: "info",
               prop: "edit",
               size: "mini",
               popconfirm:{},
