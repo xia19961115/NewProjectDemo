@@ -15,12 +15,34 @@
         v-bind="{ ...$attrs, ...item }"
       >
         <template slot-scope="scope">
+          <!-- 图片 -->
+          <template v-if="item.type === 'image'">
+            <el-image
+              style="width: 100px; height: 50px"
+              :src="scope.row[item.prop]"
+              :preview-src-list="[scope.row[item.prop]]"
+            >
+            </el-image>
+          </template>
           <!-- 非handle 为非操作 -->
-          <template v-if="item.type !== 'handle'">
-            <!-- 根据业务场景来做判断 -->
-            <!-- 自己加 -->
+          <template v-else-if="item.type !== 'handle'">
+            <!-- 日期 -->
+            <div v-if="item.format">
+              <div v-if="scope.row[item.prop] === null">-</div>
+              <!-- 此处直接渲染 后端没处理自己处理 -->
+              <div v-else>{{ handleDateFormat(scope.row[item.prop]) }}</div>
+            </div>
+            <!-- 单字典表转义中文 scope.row[item.prop]为数组/字符串多个逗号隔开****无法使用****-->
+            <div v-else-if="item.dictionary">
+              {{ item.dictionary[scope.row[item.prop]] }}
+            </div>
+            <!-- 多字典表转义中文 scope.row[item.prop] 为数组/字符串多个逗号隔开 -->
+            <div v-else-if="item.dictionaries">
+              {{ handleToAnyString(scope.row[item.prop], item.dictionaries) }}
+            </div>
+            <!-- 后续根据业务自己来做 -->
             <!-- 默认渲染数据 -->
-            <div>{{ scope.row[item.prop] }}</div>
+            <div v-else>{{ scope.row[item.prop] || "-" }}</div>
           </template>
           <template v-else>
             <div style="display: flex">
@@ -118,6 +140,37 @@ export default {
     },
     handleEmit(emit, item, index) {
       this.$emit(emit, item, index);
+    },
+    // 多字段转中文
+    handleToAnyString(data, list) {
+      let newData = data;
+      if (typeof data === "string") {
+        newData = data.split(",");
+      }
+      return newData.map((item) => list[item]).join(",");
+    },
+    handleDateFormat(timestamp) {
+      const dateTime = new Date(timestamp);
+      const YY = dateTime.getFullYear();
+      const MM =
+        dateTime.getMonth() + 1 < 10
+          ? "0" + (dateTime.getMonth() + 1)
+          : dateTime.getMonth() + 1;
+      const D =
+        dateTime.getDate() < 10 ? "0" + dateTime.getDate() : dateTime.getDate();
+      const hh =
+        dateTime.getHours() < 10
+          ? "0" + dateTime.getHours()
+          : dateTime.getHours();
+      const mm =
+        dateTime.getMinutes() < 10
+          ? "0" + dateTime.getMinutes()
+          : dateTime.getMinutes();
+      const ss =
+        dateTime.getSeconds() < 10
+          ? "0" + dateTime.getSeconds()
+          : dateTime.getSeconds();
+      return `${YY}-${MM}-${D} ${hh}:${mm}:${ss}`;
     },
   },
 };

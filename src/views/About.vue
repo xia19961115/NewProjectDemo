@@ -3,7 +3,6 @@
     <ysn-table
       :data="data"
       :options="options"
-      :numberSort="true"
       :selection="true"
       @edit="handleEdit"
     ></ysn-table>
@@ -36,6 +35,12 @@ export default {
           name: "王小虎",
           address: "上海市普陀区金沙江路 1516 弄",
         },
+        {
+          date: "2016-05-01",
+          name: "王小虎2",
+          address: "上海市普陀区金沙江路 1519 弄",
+          src:'https://img2.baidu.com/it/u=3666548066,2508071679&fm=26&fmt=auto'
+        },
       ],
       options: [
         {
@@ -54,6 +59,11 @@ export default {
           prop: "address",
         },
         {
+          label:'图片',
+          type:'image',
+          prop:'src',
+        },
+        {
           label: "操作",
           type: "handle",
           child: [
@@ -62,7 +72,7 @@ export default {
               type: "info",
               prop: "edit",
               size: "mini",
-              popconfirm:{},
+              popconfirm: {},
               rule: {
                 prop: "name",
                 value: "王小虎1",
