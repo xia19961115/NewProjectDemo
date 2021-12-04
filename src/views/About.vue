@@ -10,12 +10,17 @@
         <div>{{scope.name+'插槽中的数据'}}</div>
       </template>
     </ysn-table>
+    <ysn-page 
+    :total="1000" 
+    @change="handlePage"
+    ></ysn-page>
   </div>
 </template>
 <script>
 import ysnTable from "@/components/ysn-table.vue";
+import ysnPage from "@/components/ysn-page.vue"
 export default {
-  components: { ysnTable },
+  components: { ysnTable,ysnPage },
   data() {
     return {
       data: [
@@ -53,6 +58,7 @@ export default {
           align: "center",
           width: "100px",
           showOverflowTooltip: true,
+          sortable:true
         },
         {
           label: "姓名",
@@ -107,6 +113,10 @@ export default {
     },
     handle() {
       console.log('666666');
+    },
+    handlePage(a,v){
+      console.log(a);
+      console.log(v);
     }
   },
 };
