@@ -24,7 +24,7 @@
             >
             </el-image>
           </template>
-          <!-- 插槽其他处理业务 -->
+          <!-- 插槽处理其他业务 -->
           <template v-else-if="item.type === 'slot'">
             <slot :name="item.prop" v-bind="scope.row"></slot>
           </template>
@@ -44,7 +44,6 @@
             <div v-else-if="item.dictionaries">
               {{ handleToAnyString(scope.row[item.prop], item.dictionaries) }}
             </div>
-            <!-- 后续根据业务自己来做 -->
             <!-- 默认渲染数据 -->
             <div v-else>{{ scope.row[item.prop] || "-" }}</div>
           </template>
