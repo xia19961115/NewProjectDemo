@@ -63,7 +63,8 @@
                         @click="handleEmit(item.prop, scope.row, scope.$index)"
                         slot="reference"
                       >
-                        {{ item.label }}
+                        <i v-if="item.myicon" :class="item.myicon"></i>
+                        <div v-else>{{ item.label }}</div>
                       </el-button>
                     </template>
                     <template v-else>
@@ -72,7 +73,8 @@
                         @click="handleEmit(item.prop, scope.row, scope.$index)"
                         slot="reference"
                       >
-                        {{ item.label }}
+                        <i v-if="item.myicon" :class="item.myicon"></i>
+                        <div v-else>{{ item.label }}</div>
                       </el-button>
                     </template>
                   </el-popconfirm>
@@ -86,7 +88,10 @@
                       v-bind="{ ...$attrs, ...item }"
                       @click="handleEmit(item.prop, scope.row, scope.$index)"
                     >
-                      {{ item.label }}
+                      <!-- 需要图标显示安全传入mymyicon -->
+                      <i v-if="item.myicon" :class="item.myicon"></i>
+                      <!-- 默认文字 值为item.label -->
+                      <div v-else>{{ item.label }}</div>
                     </el-button>
                   </template>
                   <template v-else>
@@ -94,7 +99,8 @@
                       v-bind="{ ...$attrs, ...item }"
                       @click="handleEmit(item.prop, scope.row, scope.$index)"
                     >
-                      {{ item.label }}
+                      <i v-if="item.myicon" :class="item.myicon"></i>
+                      <div v-else>{{ item.label }}</div>
                     </el-button>
                   </template>
                 </template>

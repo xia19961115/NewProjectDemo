@@ -71,8 +71,11 @@ export default {
               label: "编辑",
               type: "info",
               prop: "edit",
+              myicon:"el-icon-delete",
               size: "mini",
-              popconfirm: {},
+              popconfirm: {
+                title:'删除'
+              },
               rule: {
                 prop: "name",
                 value: "王小虎1",
