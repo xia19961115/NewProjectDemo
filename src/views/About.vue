@@ -61,7 +61,7 @@ export default {
               type: "warning",
               prop: "edit",
               size: "mini",
-              popconfirm:true,
+              popconfirm:{},
               rule: {
                 prop: "name",
                 value: "王小虎1",

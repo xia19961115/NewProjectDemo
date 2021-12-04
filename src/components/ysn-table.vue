@@ -22,12 +22,12 @@
           <template v-else>
             <div style="display: flex">
               <div v-for="(item, index) in item.child" :key="index">
-                <!-- 二次确认 -->
+                <!-- 二次确认 popconfirm需要传递一个对象 -->
                 <template v-if="item.popconfirm">
                   <el-popconfirm
-                    :title="`确认${item.label}吗？`"
-                    confirm-button-text="确认"
-                    cancel-button-text="取消"
+                    :title="`确认${item.popconfirm.title || item.label}吗？`"
+                    :confirm-button-text="item.popconfirm.confirm || '确认'"
+                    :cancel-button-text="item.popconfirm.cancel || '取消'"
                     @confirm="handleEmit(item.prop, scope.row, scope.$index)"
                   >
                     <template v-if="item.rule">
@@ -53,7 +53,7 @@
                 </template>
                 <!-- 非二次确认 -->
                 <template v-else>
-                  <!-- 规则判断 -->
+                  <!-- 规则判断 rule需要传递一个对象 -->
                   <template v-if="item.rule">
                     <el-button
                       v-if="scope.row[item.rule.prop] === item.rule.value"
