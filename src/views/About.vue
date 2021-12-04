@@ -1,27 +1,29 @@
 <template>
   <div>
+    <ysn-search 
+    :options="searchOption" 
+    @search="handleSearch"
+    @add="handleAdd"
+    > </ysn-search>
     <ysn-table
       :data="data"
       :options="options"
       :selection="true"
       @edit="handleEdit"
     >
-      <template v-slot:slot='scope'>
-        <div>{{scope.name+'插槽中的数据'}}</div>
+      <template v-slot:slot="scope">
+        <div>{{ scope.name + "插槽中的数据" }}</div>
       </template>
     </ysn-table>
-    <ysn-page 
-    :total="1000"
-    :page="1"
-    @change="handlePage"
-    ></ysn-page>
+    <ysn-page :total="total" :page="page" :size="size" @change="handlePage"></ysn-page>
   </div>
 </template>
 <script>
 import ysnTable from "@/components/ysn-table.vue";
-import ysnPage from "@/components/ysn-page.vue"
+import ysnPage from "@/components/ysn-page.vue";
+import ysnSearch from "@/components/ysn-search.vue";
 export default {
-  components: { ysnTable,ysnPage },
+  components: { ysnTable, ysnPage, ysnSearch },
   data() {
     return {
       data: [
@@ -59,7 +61,7 @@ export default {
           align: "center",
           width: "100px",
           showOverflowTooltip: true,
-          sortable:true
+          sortable: true,
         },
         {
           label: "姓名",
@@ -106,6 +108,43 @@ export default {
           ],
         },
       ],
+      searchOption: [
+        {
+          mytype: "input",
+          label: "搜索",
+          prop: "search",
+          placeholder: "请输入内容",
+          clearable: true,
+        },
+        {
+          mytype: "select",
+          label: "下拉框",
+          prop: "select",
+          placeholder: "请选择",
+          clearable: true,
+          list:[
+            {
+              value:1,
+              label:'张三'
+            }
+          ]
+        },
+        {
+          mytype: "button",
+          label: "搜索",
+          prop: "search",
+          type: "info",
+        },
+        {
+          mytype: "button",
+          label: "添加",
+          prop: "add",
+          type: "primary",
+        },
+      ],
+      page:1,
+      size:10,
+      total:100
     };
   },
   methods: {
@@ -113,11 +152,19 @@ export default {
       console.log(param.date);
     },
     handle() {
-      console.log('666666');
+      console.log("666666");
     },
-    handlePage(a,v){
-      console.log(a);
-      console.log(v);
+    handlePage(param) {
+      const {page,size} =param
+      this.page = page
+      this.size = size
+    },
+    handleSearch(val) {
+      this.page = 1
+      console.log(this.page)
+    },
+    handleAdd(){
+      console.log('7777');
     }
   },
 };
