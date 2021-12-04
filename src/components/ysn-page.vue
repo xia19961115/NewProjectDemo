@@ -23,7 +23,6 @@ export default {
     },
     page: {
       typeof: Number,
-      required: true,
       default:1
     },
     size:{

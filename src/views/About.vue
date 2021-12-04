@@ -1,10 +1,7 @@
 <template>
   <div>
-    <ysn-search 
-    :options="searchOption" 
-    @search="handleSearch"
-    @add="handleAdd"
-    > </ysn-search>
+    <ysn-search :options="searchOption" @search="handleSearch" @add="handleAdd">
+    </ysn-search>
     <ysn-table
       :data="data"
       :options="options"
@@ -15,7 +12,12 @@
         <div>{{ scope.name + "插槽中的数据" }}</div>
       </template>
     </ysn-table>
-    <ysn-page :total="total" :page="page" :size="size" @change="handlePage"></ysn-page>
+    <ysn-page
+      :total="total"
+      :page="page"
+      :size="size"
+      @change="handlePage"
+    ></ysn-page>
   </div>
 </template>
 <script>
@@ -122,12 +124,29 @@ export default {
           prop: "select",
           placeholder: "请选择",
           clearable: true,
-          list:[
+          list: [
             {
-              value:1,
-              label:'张三'
-            }
-          ]
+              value: 1,
+              label: "张三",
+            },
+          ],
+        },
+        {
+          mytype: "time",
+          label: "时间",
+          prop: "time",
+          valueFormat: "HH:mm:ss",
+        },
+        {
+          mytype: "date",
+          label: "日期",
+          prop: "date",
+          type: "daterange",
+          rangeSeparator: "至",
+          startPlaceholder: "开始日期",
+          endPlaceholder: "结束日期",
+          defaultTime:['00:00:00','23:59:59'],
+          valueFormat:'yyyy-MM-dd HH:mm:ss'
         },
         {
           mytype: "button",
@@ -142,9 +161,9 @@ export default {
           type: "primary",
         },
       ],
-      page:1,
-      size:10,
-      total:100
+      page: 1,
+      size: 10,
+      total: 100,
     };
   },
   methods: {
@@ -155,17 +174,17 @@ export default {
       console.log("666666");
     },
     handlePage(param) {
-      const {page,size} =param
-      this.page = page
-      this.size = size
+      const { page, size } = param;
+      this.page = page;
+      this.size = size;
     },
     handleSearch(val) {
-      this.page = 1
-      console.log(this.page)
+      console.log(val);
+      console.log(this.page);
     },
-    handleAdd(){
-      console.log('7777');
-    }
+    handleAdd() {
+      console.log("7777");
+    },
   },
 };
 </script>
