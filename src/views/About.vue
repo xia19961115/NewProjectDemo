@@ -7,6 +7,8 @@
       :options="options"
       :selection="true"
       @edit="handleEdit"
+      :border="true"
+      :row-class-name="tableRowClassName"
     >
       <template v-slot:slot="scope">
         <div>{{ scope.name + "插槽中的数据" }}</div>
@@ -145,8 +147,8 @@ export default {
           rangeSeparator: "至",
           startPlaceholder: "开始日期",
           endPlaceholder: "结束日期",
-          defaultTime:['00:00:00','23:59:59'],
-          valueFormat:'yyyy-MM-dd HH:mm:ss'
+          defaultTime: ["00:00:00", "23:59:59"],
+          valueFormat: "yyyy-MM-dd HH:mm:ss",
         },
         {
           mytype: "button",
@@ -185,6 +187,23 @@ export default {
     handleAdd() {
       console.log("7777");
     },
+    tableRowClassName({ row, rowIndex }) {
+      if (rowIndex === 1) {
+        return "warning-row";
+      } else if (rowIndex === 3) {
+        return "success-row";
+      }
+      return "";
+    },
   },
 };
 </script>
+<style>
+  .el-table .warning-row {
+    background: oldlace;
+  }
+
+  .el-table .success-row {
+    background: #f0f9eb;
+  }
+</style>

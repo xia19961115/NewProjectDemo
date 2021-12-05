@@ -1,6 +1,10 @@
 <template>
-  <div>
-    <el-table :data="compileData" @selection-change="handleSelection" border>
+  <div class="reserReguCard">
+    <el-table 
+    :data="compileData" 
+    @selection-change="handleSelection"
+    v-bind="$attrs"
+    >
       <!-- 是否需要筛选 -->
       <el-table-column v-if="selection" type="selection" width="55">
       </el-table-column>
@@ -12,7 +16,7 @@
         :key="index"
         :prop="item.prop"
         :label="item.label"
-        v-bind="{ ...$attrs, ...item }"
+        v-bind="{ ...item }"
       >
         <template slot-scope="scope">
           <!-- 图片 -->
@@ -88,7 +92,7 @@
                   <template v-if="item.rule">
                     <el-button
                       v-if="scope.row[item.rule.prop] === item.rule.value"
-                      v-bind="{ ...$attrs, ...item }"
+                      v-bind="{ ...item }"
                       @click="handleEmit(item.prop, scope.row, scope.$index)"
                     >
                       <!-- 需要图标显示安全传入mymyicon -->
