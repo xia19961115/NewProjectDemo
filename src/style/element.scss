@@ -181,6 +181,30 @@ $--font-path: "~element-ui/lib/theme-chalk/fonts";
 .el-input__inner,.el-range-input{
   background-color: transparent !important;
 }
+.el-input__inner{
+  border-radius: 30px;
+}
+.el-range-editor.is-active{
+  border-color:#1c4c7f !important;
+}
+.el-time-range-picker__content,
+.el-time-panel__footer,
+.el-date-range-picker__content.is-left,
+.el-date-range-picker__content.is-right{
+  background-color: #eeede8 !important;
+}
+.el-date-table td.start-date span, .el-date-table td.end-date span{
+  background-color: #1c4c7f !important;
+}
+.el-time-panel__btn.confirm,.el-date-table td.available:hover{
+  color: #1c4c7f !important;
+}
+.el-date-table td.today span{
+  color: #f03d3d;
+}
+.el-time-spinner__wrapper.is-arrow .el-time-spinner__item:hover:not(.disabled):not(.active){
+  background-color: #eeede8 !important;
+}
 .el-checkbox__inner{
   background: none;
   border-color: #848382;
@@ -200,7 +224,6 @@ $--font-path: "~element-ui/lib/theme-chalk/fonts";
   }
 
 }
-
 // .el-table .el-table__header-wrapper  {
 //   th.is-leaf, .el-table td{
 //     border-bottom: none;

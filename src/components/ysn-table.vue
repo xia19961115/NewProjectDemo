@@ -65,6 +65,7 @@
                   >
                     <template v-if="item.rule">
                       <el-button
+                        style="margin-right:8px"
                         v-if="scope.row[item.rule.prop] === item.rule.value"
                         v-bind="{ ...$attrs, ...item }"
                         @click="handleEmit(item.prop, scope.row, scope.$index)"
@@ -76,6 +77,7 @@
                     </template>
                     <template v-else>
                       <el-button
+                        style="margin-right:8px"
                         v-bind="{ ...$attrs, ...item }"
                         @click="handleEmit(item.prop, scope.row, scope.$index)"
                         slot="reference"
@@ -91,6 +93,7 @@
                   <!-- 规则判断 rule需要传递一个对象 -->
                   <template v-if="item.rule">
                     <el-button
+                      style="margin-right:8px"
                       v-if="scope.row[item.rule.prop] === item.rule.value"
                       v-bind="{ ...item }"
                       @click="handleEmit(item.prop, scope.row, scope.$index)"
@@ -103,6 +106,7 @@
                   </template>
                   <template v-else>
                     <el-button
+                      style="margin-right:8px"
                       v-bind="{ ...$attrs, ...item }"
                       @click="handleEmit(item.prop, scope.row, scope.$index)"
                     >
