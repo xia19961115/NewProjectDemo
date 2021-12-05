@@ -7,7 +7,6 @@
       :options="options"
       :selection="true"
       @edit="handleEdit"
-      :border="true"
       :row-class-name="tableRowClassName"
     >
       <template v-slot:slot="scope">
@@ -200,10 +199,10 @@ export default {
 </script>
 <style>
   .el-table .warning-row {
-    background: oldlace;
+    color: #F00;;
   }
 
   .el-table .success-row {
-    background: #f0f9eb;
+    background: #f0f9eb !important;
   }
 </style>
