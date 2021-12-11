@@ -48,6 +48,10 @@
             <div v-else-if="item.dictionaries">
               {{ handleToAnyString(scope.row[item.prop], item.dictionaries) }}
             </div>
+            <!-- 支持formatter 自定义处理内部数据 -->
+            <div v-else-if="item.formatter">
+              {{item.formatter && item.formatter(scope.row)}}
+            </div>
             <!-- 默认渲染数据 -->
             <div v-else>{{ scope.row[item.prop] || "-" }}</div>
           </template>

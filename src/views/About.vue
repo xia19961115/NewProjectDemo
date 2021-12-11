@@ -31,29 +31,44 @@ export default {
     return {
       data: [
         {
-          date: "2016-05-02",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1518 弄",
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
         },
         {
-          date: "2016-05-04",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1517 弄",
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
         },
         {
-          date: "2016-05-01",
-          name: "王小虎1",
-          address: "上海市普陀区金沙江路 1519 弄",
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
         },
         {
-          date: "2016-05-03",
-          name: "王小虎",
-          address: "上海市普陀区金沙江路 1516 弄",
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333
         },
         {
-          date: "2016-05-01",
-          name: "王小虎2",
-          address: "上海市普陀区金沙江路 1519 弄",
+          date: '2016-05-02',
+          name: '王小虎',
+          province: '上海',
+          city: '普陀区',
+          address: '上海市普陀区金沙江路 1518 弄',
+          zip: 200333,
           src: "https://img2.baidu.com/it/u=3666548066,2508071679&fm=26&fmt=auto",
         },
       ],
@@ -71,8 +86,18 @@ export default {
           prop: "name",
         },
         {
+          label: "区域",
+          prop: "province",
+          formatter:(row)=> this.nameListChange(row.province)
+        },
+        {
+          label: "编码",
+          prop: "zip",
+        },
+        {
           label: "地址",
           prop: "address",
+          showOverflowTooltip: true,
         },
         {
           label: "图片",
@@ -83,10 +108,12 @@ export default {
           label: "插槽",
           type: "slot",
           prop: "slot",
+          showOverflowTooltip: true,
         },
         {
           label: "操作",
           type: "handle",
+          fixed:"right",
           child: [
             {
               label: "编辑",
@@ -118,12 +145,14 @@ export default {
           prop: "search",
           placeholder: "请输入内容",
           clearable: true,
+          change:this.change
         },
         {
           mytype: "select",
           label: "下拉框",
           prop: "select",
           placeholder: "请选择",
+          multiple:true,
           clearable: true,
           list: [
             {
@@ -161,6 +190,9 @@ export default {
           prop: "add",
           type: "primary",
         },
+        {
+          mytype: "resetButton",
+        },
       ],
       page: 1,
       size: 10,
@@ -194,6 +226,13 @@ export default {
       }
       return "";
     },
+    change(val) {
+      console.log(val)
+      val.select = ''
+    },
+    nameListChange(val) {
+      return val +'牛逼'
+    }
   },
 };
 </script>

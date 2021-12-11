@@ -238,6 +238,12 @@ $--font-path: "~element-ui/lib/theme-chalk/fonts";
   .el-time-spinner__item:hover:not(.disabled):not(.active) {
   background-color: #eeede8 !important;
 }
+.el-time-spinner__arrow:hover{
+  color: #1c4c7f !important;
+}
+.el-select-dropdown.is-multiple .el-select-dropdown__item.selected{
+  color: #1c4c7f !important;
+}
 .el-checkbox__inner {
   background: none;
   border-color: #848382;

@@ -14,6 +14,7 @@
               class="search-flex1"
               v-model="form[item.prop]"
               v-bind="{ ...item }"
+              @change="item.change && item.change(form)"
             ></el-input>
           </template>
           <!-- 下拉框 -->
@@ -23,6 +24,7 @@
               class="search-flex1"
               v-model="form[item.prop]"
               v-bind="{ ...item }"
+              @change="item.change && item.change(form[item.prop])"
             >
               <el-option
                 v-for="item in item.list"
@@ -88,6 +90,11 @@ export default {
       typeof: Array,
       default: () => [],
     },
+  },
+  created() {
+    // console.log(this.$attrs)
+    // console.log(this.$listeners);
+    console.log(this.form);
   },
   data() {
     return {
