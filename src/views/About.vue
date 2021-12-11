@@ -29,6 +29,7 @@ export default {
   components: { ysnTable, ysnPage, ysnSearch },
   data() {
     return {
+      text:'',
       data: [
         {
           date: '2016-05-02',
@@ -168,6 +169,10 @@ export default {
           prop: "time",
           valueFormat: "HH:mm:ss",
         },
+         {
+          mytype: "slot",
+          prop:'slot'
+        },
         {
           mytype: "date",
           label: "日期",
@@ -201,6 +206,9 @@ export default {
     };
   },
   methods: {
+    handleEvent($event){
+      console.log($event.target);
+    },
     handleEdit(param) {
       console.log(param.date);
     },
