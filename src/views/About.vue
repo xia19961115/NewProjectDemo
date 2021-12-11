@@ -1,7 +1,11 @@
 <template>
   <div>
-    <ysn-search :options="searchOption" @search="handleSearch" @add="handleAdd">
-    </ysn-search>
+    <ysn-search 
+    :options="searchOption" 
+    :needShowMore="true" 
+    :needReset="true" 
+    @search="handleSearch" 
+    @add="handleAdd" />
     <ysn-table
       :data="data"
       :options="options"
@@ -145,7 +149,7 @@ export default {
           label: "搜索",
           prop: "search",
           placeholder: "请输入内容",
-          isFrist:true,
+          isFirst:true,
           clearable: true,
           change:this.change
         },
@@ -153,6 +157,7 @@ export default {
           mytype: "select",
           label: "下拉框",
           prop: "select",
+          isFirst:true,
           placeholder: "请选择",
           multiple:true,
           clearable: true,
@@ -164,14 +169,31 @@ export default {
           ],
         },
         {
+          mytype: "input",
+          label: "搜索",
+          prop: "search1",
+          placeholder: "请输入内容",
+          clearable: true,
+        },
+        {
+          mytype: "input",
+          label: "搜索",
+          prop: "search2",
+          placeholder: "请输入内容",
+          clearable: true,
+        },
+        {
+          mytype: "input",
+          label: "搜索",
+          prop: "search3",
+          placeholder: "请输入内容",
+          clearable: true,
+        },
+        {
           mytype: "time",
           label: "时间",
           prop: "time",
           valueFormat: "HH:mm:ss",
-        },
-         {
-          mytype: "slot",
-          prop:'slot'
         },
         {
           mytype: "date",
@@ -222,7 +244,7 @@ export default {
     },
     handleSearch(val) {
       console.log(val);
-      console.log(this.page);
+      // console.log(this.page);
     },
     handleAdd() {
       console.log("7777");
@@ -235,10 +257,10 @@ export default {
       }
       return "";
     },
-    change(val) {
-      console.log(val)
-      val.select = ''
-    },
+    // change(val) {
+    //   console.log(val)
+    //   val.select = []
+    // },
     nameListChange(val) {
       return val +'牛逼'
     }
