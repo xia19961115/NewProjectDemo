@@ -144,6 +144,7 @@ export default {
           label: "搜索",
           prop: "search",
           placeholder: "请输入内容",
+          isFrist:true,
           clearable: true,
           change:this.change
         },

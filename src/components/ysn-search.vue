@@ -14,7 +14,7 @@
               class="search-flex1"
               v-model="form[item.prop]"
               v-bind="{ ...item }"
-              @change="item.change && item.change(form)"
+              @change="item.change && item.change(form[item.prop])"
             ></el-input>
           </template>
           <!-- 下拉框 -->
@@ -92,9 +92,8 @@ export default {
     },
   },
   created() {
-    // console.log(this.$attrs)
-    // console.log(this.$listeners);
-    console.log(this.form);
+    console.log(this.$attrs)
+    console.log(this.$listeners);
   },
   data() {
     return {
