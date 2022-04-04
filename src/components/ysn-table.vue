@@ -30,7 +30,7 @@
           </template>
           <!-- 插槽处理其他业务 -->
           <template v-else-if="item.type === 'slot'">
-            <slot :name="item.prop" v-bind="scope.row"></slot>
+            <slot :name="item.prop" v-bind="scope"></slot>
           </template>
           <!-- 非handle 为非操作 -->
           <template v-else-if="item.type !== 'handle'">
@@ -70,7 +70,7 @@
                     <template v-if="item.rule">
                       <el-button
                         style="margin-right:8px"
-                        v-if="scope.row[item.rule.prop] === item.rule.value"
+                        v-show="scope.row[item.rule.prop] === item.rule.value"
                         v-bind="{ ...$attrs, ...item }"
                         @click="handleEmit(item.prop, scope.row, scope.$index)"
                         slot="reference"
